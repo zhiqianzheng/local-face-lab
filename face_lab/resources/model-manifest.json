@@ -1,0 +1,53 @@
+{
+  "files": [
+    {
+      "path": "face_landmarker.task",
+      "bytes": 3758596,
+      "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
+      "url": "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task"
+    },
+    {
+      "path": "expression.onnx",
+      "bytes": 4791892,
+      "sha256": "4f61307602fc089ce20488a31d4e4614e3c9753a7d6c41578c854858b183e1a9",
+      "url": "https://media.githubusercontent.com/media/opencv/opencv_zoo/main/models/facial_expression_recognition/facial_expression_recognition_mobilefacenet_2022july.onnx"
+    },
+    {
+      "path": "face.onnx",
+      "bytes": 232589,
+      "sha256": "8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4",
+      "url": "https://media.githubusercontent.com/media/opencv/opencv_zoo/main/models/face_detection_yunet/face_detection_yunet_2023mar.onnx"
+    },
+    {
+      "path": "emotieff-b0.onnx",
+      "bytes": 16039595,
+      "sha256": "7aa2ea31c1311f4f8aa9d3fdb085d418dd4e7a48c4b9ed41df8c044f91d0213f",
+      "url": "https://raw.githubusercontent.com/sb-ai-lab/EmotiEffLib/main/models/affectnet_emotions/onnx/enet_b0_8_best_afew.onnx"
+    },
+    {
+      "path": "libreface/LibreFace_AU_Intensity.onnx",
+      "bytes": 289061,
+      "sha256": "9c0c23a826e326ff6a5c9545e9792ec1624d0254588e5f3ab3bfef0e270dc374",
+      "archive_member": "contentFiles/any/any/LibreFace_AU_Intensity.onnx"
+    },
+    {
+      "path": "libreface/LibreFace_AU_Presence.onnx",
+      "bytes": 289059,
+      "sha256": "a789de833cfb69a54e7706dd30a0935faa04e6a7273449ff5e564aeb61e99087",
+      "archive_member": "contentFiles/any/any/LibreFace_AU_Presence.onnx"
+    },
+    {
+      "path": "libreface/LibreFace_AU_Encoder.onnx",
+      "bytes": 44883922,
+      "sha256": "2eaf01eb6dffe3b6f50f8e84eb1ecf315e332c972fd77e12187a7bb956575d8c",
+      "archive_member": "contentFiles/any/any/LibreFace_AU_Encoder.onnx"
+    }
+  ],
+  "libreface_package": {
+    "url": "https://api.nuget.org/v3-flatcontainer/libreface/2.0.0/libreface.2.0.0.nupkg",
+    "sha512_base64": "wazq0cCnmv0NlKycQ/EAVvpb27S50skGIepaF/h0VIWf7D6bI9GvPFoKd/GsmozQu6xuBD2cBegxSvg8HTge5w==",
+    "filename": "libreface-2.0.0.nupkg",
+    "source_commit": "33dcaf80d0c07ca2751f489b40d4399b78972e75"
+  },
+  "libreface_note": "Official NuGet package 2.0.0 describes WACV 2024. Do not equate package version with FG 2026 paper version."
+}

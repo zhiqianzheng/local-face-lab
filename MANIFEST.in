@@ -1,0 +1,15 @@
+include LICENSE THIRD_PARTY_NOTICES.md CHANGELOG.md README.md
+include install.sh start.sh open.sh requirements.txt requirements-dev.txt
+recursive-include face_lab/templates *.html
+recursive-include face_lab/static *.css *.js
+recursive-include face_lab/resources *.json *.txt
+recursive-include docs *.md *.png
+recursive-include checks *.py
+recursive-include tests *.py
+recursive-include scripts *.py
+include models/README-upstream.md
+exclude models/model-manifest.json
+global-exclude *.onnx *.task *.webm *.mp4 *.avi *.y4m *.pyc
+prune recordings
+prune backups
+prune vendor
