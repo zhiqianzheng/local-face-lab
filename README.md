@@ -22,7 +22,7 @@
 
 ### 方式一：Linux 免安装运行包（普通用户推荐）
 
-从 [Releases](https://github.com/zhiqianzheng/local-face-lab/releases/latest) 下载 **`local-face-lab-v0.1.1-linux-x86_64-portable.tar.gz`**。
+从 [Releases](https://github.com/zhiqianzheng/local-face-lab/releases/latest) 下载 **`local-face-lab-v0.1.2-linux-x86_64-portable.tar.gz`**。
 
 1. 解压整个压缩包。
 2. 双击里面的 **`LocalFaceLab`** 可执行文件；也可在终端运行 `./LocalFaceLab`。
@@ -52,7 +52,7 @@
 ```bash
 python3.12 -m venv .venv
 source .venv/bin/activate
-python -m pip install /path/to/local_face_lab-0.1.1-py3-none-any.whl
+python -m pip install /path/to/local_face_lab-0.1.2-py3-none-any.whl
 face-lab --download-only
 face-lab
 ```

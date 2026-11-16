@@ -23,6 +23,17 @@ for dist in importlib.metadata.distributions():
             source=dist.locate_file(file)
             if source.is_file():datas.append((str(source),'licenses/runtime/'+dist.metadata['Name']))
 binaries=collect_dynamic_libs('mediapipe')+collect_dynamic_libs('onnxruntime')
+# MediaPipe's Linux shared library links EGL/GLES even in CPU mode.
+# PyInstaller normally excludes these system graphics libraries; bundle them explicitly.
+import sys
+if sys.platform.startswith('linux'):
+    for name in ['libEGL.so.1','libGLESv2.so.2','libGLdispatch.so.0']:
+        candidates=[Path('/lib/x86_64-linux-gnu')/name,Path('/usr/lib/x86_64-linux-gnu')/name]
+        source=next((p for p in candidates if p.exists()),None)
+        if source is None:raise RuntimeError(f'Missing build-host library: {name}')
+        binaries.append((str(source),'.'))
+    notice=Path('/usr/share/doc/libglvnd0/copyright')
+    if notice.exists():datas.append((str(notice),'licenses/runtime/libglvnd'))
 a=Analysis([str(root/'packaging/portable_entry.py')],pathex=[str(root)],
     binaries=binaries,datas=datas,hiddenimports=['mediapipe.tasks.c'],
     hookspath=[],runtime_hooks=[],excludes=['playwright','pytest','torch','tensorflow','IPython','notebook','tkinter','PyQt5','PyQt6','PySide6'],noarchive=False)

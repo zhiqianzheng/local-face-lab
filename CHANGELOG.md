@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2
+
+- Explicitly bundle EGL/GLES/GLdispatch runtime libraries required by MediaPipe CPU inference.
+- Verify the portable runtime with the corresponding host libraries hidden.
+
 ## 0.1.1
 
 - Add a Linux x86_64 portable distribution with embedded Python, native dependencies and verified models; no installation or first-run downloads required.

@@ -19,6 +19,7 @@ The deliberate OpenCV headless substitution replaces the `cv2` module; do not in
 Tests performed for the initial portable release:
 
 - Run the frozen executable with an isolated HOME, no external Python paths and no network, hiding the entire developer home directory using bubblewrap.
+- Hide host EGL/GLES/GLdispatch shared objects as well, to verify the explicit graphics runtime bundle.
 - `--self-test` exercises native MediaPipe loading/detection and all required model inference graphs on synthetic inputs, without a camera or network.
 - Run the frozen server in isolation and exercise face predictions, AU output, all modes, WebM recording and CSV/JSON downloads with a simulated camera.
 - Inspect release contents and verify each bundled model against the pinned manifest.
