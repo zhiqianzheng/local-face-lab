@@ -13,3 +13,5 @@ global-exclude *.onnx *.task *.webm *.mp4 *.avi *.y4m *.pyc
 prune recordings
 prune backups
 prune vendor
+
+recursive-include packaging *.py *.spec *.txt *.md

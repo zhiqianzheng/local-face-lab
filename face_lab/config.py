@@ -1,4 +1,5 @@
 import os
+import sys
 from pathlib import Path
 
 PACKAGE_DIR = Path(__file__).resolve().parent
@@ -14,4 +15,9 @@ def data_dir():
     return root / 'local-face-lab'
 
 def model_dir():
-    return Path(os.environ.get('FACE_LAB_MODEL_DIR', data_dir() / 'models')).expanduser().resolve()
+    override = os.environ.get('FACE_LAB_MODEL_DIR')
+    if override:
+        return Path(override).expanduser().resolve()
+    if getattr(sys, 'frozen', False):
+        return Path(sys._MEIPASS) / 'bundled_models'
+    return data_dir() / 'models'

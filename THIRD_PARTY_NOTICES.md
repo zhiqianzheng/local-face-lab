@@ -12,7 +12,7 @@ Original application code is licensed under the terms in LICENSE. That license d
 | LibreFace AU Encoder / Intensity / Presence | Extracted from official NuGet package 2.0.0 | USC Research License; educational, research and non-profit purposes; commercial permission required |
 | MediaPipe Face Landmarker | Task model downloaded from Google's model hosting | MediaPipe source is Apache-2.0; consult Google's applicable model terms/model card separately; a source-code license alone does not establish all model rights |
 
-This release is intended for personal learning and non-commercial research. It does not include pretrained model binaries, training datasets, camera recordings, or downloaded sample photographs. Model download URLs and integrity hashes are in `face_lab/resources/model-manifest.json`.
+This release is intended for personal learning and non-commercial research. The source repository and developer packages do not include pretrained model binaries. The standalone portable distribution bundles the verified model binaries and their notices for educational/non-commercial research use. No distribution includes training datasets, camera recordings, or downloaded sample photographs. Model download URLs and integrity hashes are in `face_lab/resources/model-manifest.json`.
 
 ## LibreFace version clarification
 

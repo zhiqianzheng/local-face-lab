@@ -22,6 +22,7 @@ def main(argv=None):
     parser.add_argument('--download-models',action='store_true',help='Download/repair missing model files')
     parser.add_argument('--download-only',action='store_true',help='Download models and exit')
     parser.add_argument('--check-models',action='store_true',help='Verify all required model checksums and exit')
+    parser.add_argument('--self-test',action='store_true',help='Run offline native-library and model smoke checks, then exit')
     parser.add_argument('--no-browser',action='store_true',help='Do not open the browser automatically')
     args=parser.parse_args(argv)
     if not 1<=args.port<=65535:parser.error('port must be between 1 and 65535')
@@ -40,6 +41,10 @@ def main(argv=None):
             print('Model directory:',model_dir())
             return 1
         if args.download_only:return 0
+        if args.self_test:
+            from .self_test import run
+            run()
+            return 0
         url=f'http://127.0.0.1:{args.port}'
         with socket.socket() as probe:
             listening=probe.connect_ex(('127.0.0.1',args.port))==0

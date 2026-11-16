@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.1
+
+- Add a Linux x86_64 portable distribution with embedded Python, native dependencies and verified models; no installation or first-run downloads required.
+- Add offline runtime/model `--self-test` and frozen-resource path support.
+- Preserve recordings in the user data directory, independently of the extracted application folder.
+- Clearly distinguish standalone user downloads from developer source/wheel packages.
+
 ## 0.1.0
 
 First packaged release of Local Face Lab.

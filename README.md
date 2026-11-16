@@ -20,18 +20,30 @@
 
 ## 下载与安装
 
-### 方式一：Linux 安装包（推荐）
+### 方式一：Linux 免安装运行包（普通用户推荐）
 
-从 [Releases](https://github.com/zhiqianzheng/local-face-lab/releases) 下载 `local-face-lab-v0.1.0-source.zip` 或源码安装包，解压后在目录中运行：
+从 [Releases](https://github.com/zhiqianzheng/local-face-lab/releases/latest) 下载 **`local-face-lab-v0.1.1-linux-x86_64-portable.tar.gz`**。
+
+1. 解压整个压缩包。
+2. 双击里面的 **`LocalFaceLab`** 可执行文件；也可在终端运行 `./LocalFaceLab`。
+3. 浏览器会自动打开，点击“开启摄像头”并允许权限。
+
+**该 portable 包内置 Python、依赖库和全部所需模型，首次启动也不需要联网下载安装。** 必须保留旁边的 `_internal/` 文件夹，不能只复制可执行文件。
+
+适用于 Linux x86_64、glibc 2.35 或以上（例如 Ubuntu 22.04 及更新版本）。操作系统需要正常工作的摄像头驱动和现代浏览器。它不是 Windows 或 ARM 安装包；不承诺一个二进制文件跨操作系统通用。
+
+命令行自检：`./LocalFaceLab --self-test`。启动失败时查看用户数据目录中的 `startup-error.log`。
+
+### 源码安装（开发者）
+
+`source.zip`、源码 `.tar.gz` 和 `.whl` 是开发者包，**不等同于免安装运行包**。源码安装需要 Python/依赖和首次联网下载模型：
 
 ```bash
 ./install.sh
 ./start.sh
 ```
 
-安装器优先使用已安装的 [uv](https://docs.astral.sh/uv/)，否则使用 `python3.12 -m venv` 和 pip。首次安装需要联网获取 Python 依赖和上游模型；下载带 SHA-256 校验，LibreFace 原始包另有 SHA-512 校验。模型总下载流量约 110 MB，Python 依赖另计。
-
-程序打开浏览器后，点击“开启摄像头”，允许浏览器访问。按 `Ctrl+C` 停止服务。
+安装器优先使用已安装的 [uv](https://docs.astral.sh/uv/)，否则使用 `python3.12 -m venv` 和 pip。上游模型下载有 SHA-256 校验，LibreFace 原始包另有 SHA-512 校验。
 
 ### 方式二：安装 Python wheel
 
@@ -40,7 +52,7 @@
 ```bash
 python3.12 -m venv .venv
 source .venv/bin/activate
-python -m pip install /path/to/local_face_lab-0.1.0-py3-none-any.whl
+python -m pip install /path/to/local_face_lab-0.1.1-py3-none-any.whl
 face-lab --download-only
 face-lab
 ```
@@ -78,6 +90,7 @@ face-lab --model-dir /path/to/models --data-dir /path/to/data
 | 启动方式 | 模型目录 | 录像目录 |
 | --- | --- | --- |
 | 源码目录 `./start.sh` | 项目 `models/` | 项目 `recordings/` |
+| portable 包的 `LocalFaceLab` | 随包 `_internal/bundled_models/` | 用户数据目录中的 `recordings/` |
 | 安装后的 `face-lab` | 用户数据目录中的 `models/` | 用户数据目录中的 `recordings/` |
 
 Linux 默认用户数据目录为 `${XDG_DATA_HOME:-~/.local/share}/local-face-lab`。可用 `--model-dir` / `--data-dir` 或 `FACE_LAB_MODEL_DIR` / `FACE_LAB_DATA_DIR` 修改。程序不会自动删除录像，使用者自行管理磁盘空间。
@@ -126,7 +139,7 @@ YuNet 人脸检测（只选择最大人脸）
 - 低光、遮挡、侧脸、说话、个人面部习惯可能影响结果。
 - 面部动作与具体想法没有一一对应关系；软件不输出心理诊断、人格结论或测谎结论。
 - 没有登录和远程多用户设计。仅在本机使用，不应直接暴露到公网。
-- 正常分析时不向云端上传视频；首次依赖/模型下载会连接相应上游服务。
+- 正常分析时不向云端上传视频；开发者安装时的依赖/模型下载会连接相应上游服务；portable 包无需首次下载。
 
 ## 开发与测试
 
@@ -156,4 +169,4 @@ uv build
 
 自写代码按 [LICENSE](LICENSE) 中的 MIT 条款发布；第三方代码和模型各自保留许可。**完整应用并非不受限制的 MIT 软件**：LibreFace 派生组件和模型受 USC Research License 约束，商业使用需另行取得许可。公开仓库不等于所有组件可任意商用。
 
-详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。感谢 OpenCV Zoo、EmotiEffLib、LibreFace / OpenSense 和 MediaPipe。仓库与 Release 不包含模型权重、训练数据、个人录像或样例人像照片。
+详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。感谢 OpenCV Zoo、EmotiEffLib、LibreFace / OpenSense 和 MediaPipe。仓库和开发者包不包含模型权重；portable 包包含经校验的所需模型及许可文件。所有发行物均不包含个人录像、训练数据或样例人像照片。

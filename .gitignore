@@ -21,3 +21,6 @@ build/
 models/libreface/LibreFace.nuspec
 models/*
 !models/README-upstream.md
+portable-dist/
+
+.freeze-venv/
